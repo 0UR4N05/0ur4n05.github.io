@@ -3,38 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://0ur4n05.github.io/posts/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/posts/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://0ur4n05.github.io/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://0ur4n05.github.io/posts/creation-dun-nouveau-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/series/hugo-101/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://0ur4n05.github.io/tags/ctf/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://0ur4n05.github.io/posts/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://0ur4n05.github.io/series/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://0ur4n05.github.io/tags/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://0ur4n05.github.io/tags/tokyo/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://0ur4n05.github.io/tags/tokyo-ghoul/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://0ur4n05.github.io/posts/tangia/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://0ur4n05.github.io/tags/tryhackme/</loc>
+    <lastmod>2021-06-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,67 +48,11 @@
   </url>
   
   <url>
-    <loc>https://0ur4n05.github.io/posts/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/posts/debuter-avec-hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/posts/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/posts/introduction-aux-modeles-hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://0ur4n05.github.io/posts/migrer-vers-hugo-depuis-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://0ur4n05.github.io/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://0ur4n05.github.io/series/</loc>
   </url>
   
 </urlset>
