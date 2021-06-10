@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>0UR4N05</title>
-    <link>https://0ur4n05.github.io/</link>
-    <description>Recent content on 0UR4N05</description>
+    <title>tokyo on 0UR4N05</title>
+    <link>https://0ur4n05.github.io/tags/tokyo/</link>
+    <description>Recent content in tokyo on 0UR4N05</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://0ur4n05.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://0ur4n05.github.io/tags/tokyo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Try Hack me | Tokyo ghoul (official write-up)</title>
       <link>https://0ur4n05.github.io/posts/tangia/</link>
@@ -18,16 +18,6 @@
 Where am i ? So we gonna start by doing a quick scan using nmap :
 ┌─[ouranos@parrot]─[~/ctf/thm/tokyo] └──╼ $sudo nmap -A -T4 $IP As we can see we have 3 open ports :
  Ftp with anonymous login : 21 Ssh : 22 Http , apache ubuntu version : 80  Planning to escape After knowing the open ports i will navigate trough the website and inspect elements look for anything specious.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://0ur4n05.github.io/about/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://0ur4n05.github.io/about/</guid>
-      <description>Whoami Hello world, i&amp;rsquo;m Mohamed Lalama aka 0UR4N05, and I’m a cyber security student and researcher. In my free time i love playing CTF (capture the flag) , check my TryHackMe and ctftime. My strongest skills lie within Web app security and binnnary exploitation.
-LANGUAGE &amp;amp; TECHNOLOGY -Python, Ruby, Bash, C++/C, Git. -Reverse engineering, binnary exploitation, Web app security. Projects I have just a few intersting projects in my Github</description>
     </item>
     
   </channel>
