@@ -1,0 +1,108 @@
+baseURL: "http://ouranus.me"
+title: 0UR4N05
+paginate: 5
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: UA-123-45
+
+minify:
+    disableXML: true
+    minifyOutput: true
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    title: ExampleSite
+    description: "ExampleSite description"
+    keywords: [Blog, Portfolio, PaperMod]
+    author: 0UR4N05
+    images: ["<link or path of image for opengraph, twitter-cards>"]
+    DateFormat: "January 2, 2006"
+    defaultTheme: auto # dark, light
+    disableThemeToggle: false
+
+    ShowReadingTime: true
+    ShowShareButtons: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: false
+    disableSpecial1stPost: false
+    disableScrollToTop: false
+    comments: false
+    hidemeta: false
+    hideSummary: false
+    showtoc: false
+    tocopen: false
+
+
+    label:
+        text: "Home"
+
+    # profile-mode
+    profileMode:
+        enabled: false # needs to be explicitly set
+        title: 0UR4N05
+        subtitle: ""
+        imageUrl: ""
+        imageWidth: 120
+        imageHeight: 120
+        imageTitle: my image
+        buttons:
+            - name: Posts
+              url: posts
+            - name: Tags
+              url: tags
+
+    # home-info mode
+    homeInfoParams:
+        Title: "Welcome home"
+        Content: U2tpbiB0aGUgc3VuLCBmYWxsIGFzbGVlcApXaXNoIGF3YXksIHNvdWwgaXMgY2hlYXAKTGVzc29uIGxlYXJuZWQsIHdpc2ggbWUgbHVjawpTb290aGUgdGhlIGJ1cm4sIHdha2UgbWUgdXA=
+
+    socialIcons:
+        - name: twitter
+          url: "https://twitter.com/ouranossama"
+        - name: github
+          url: "https://github.com/0UR4N05"
+
+    analytics:
+        google:
+            SiteVerificationTag: "XYZabc"
+        bing:
+            SiteVerificationTag: "XYZabc"
+        yandex:
+            SiteVerificationTag: "XYZabc"
+
+    cover:
+        hidden: true # hide everywhere but not in structured data
+        hiddenInList: true # hide on list pages and home
+        hiddenInSingle: true # hide on single page
+
+    # for search
+    # https://fusejs.io/api/options.html
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
+menu:
+    main:
+        - identifier: whoami
+          name: whoami
+          url: /whoami/
+          weight: 20
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+# pygmentsUseClasses: true
+# markup:
+#     highlight:
+#         # anchorLineNos: true
+#         codeFences: true
+#         guessSyntax: true
+#         lineNos: true
+#         style: monokai
