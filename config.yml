@@ -2,7 +2,7 @@ baseURL: "http://ouranus.me"
 title: 0UR4N05
 paginate: 5
 theme: PaperMod
-
+publishDir: "docs"
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
